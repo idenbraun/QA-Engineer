@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Engineer | Браун Денис</title>
+    <!-- иконки Font Awesome для логотипов -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* === Базовые стили и сброс === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+
+        /* === Основной контейнер карточки === */
+        .card {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            background: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* Декоративная полоса сверху */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6c5ce7, #a29bfe, #6c5ce7);
+        }
+
+        /* === Шапка: имя и специализация === */
+        .header {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #2d3436;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #6c5ce7;
+            font-weight: 500;
+            background: rgba(108, 92, 231, 0.1);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        /* === Блок со статусом === */
+        .status-block {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f1f4f8;
+            border-radius: 16px;
+            padding: 18px 24px;
+            margin-bottom: 30px;
+            border-left: 4px solid #27ae60;
+            transition: all 0.3s ease;
+        }
+
+        .status-block:hover {
+            background: #eafaf1;
+            border-left-color: #2ecc71;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.1);
+        }
+
+        .status-dot {
+            width: 14px;
+            height: 14px;
+            background: #27ae60;
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(39, 174, 96, 0);
+            }
+        }
+
+        .status-text {
+            font-size: 0.95rem;
+            color: #2d3436;
+            font-weight: 500;
+        }
+
+        .status-text strong {
+            color: #27ae60;
+        }
+
+        /* === Сетка для разделов === */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* === Левая колонка — своя внутренняя сетка === */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .section {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .section h2 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6c5ce7;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section h2 i {
+            font-size: 1.1rem;
+            color: #a29bfe;
+        }
+
+        /* === Списки навыков и контактов === */
+        .skills-list, .contact-list {
+            list-style: none;
+        }
+
+        .skills-list li, .contact-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .skills-list i {
+            color: #6c5ce7;
+            width: 20px;
+            text-align: center;
+        }
+
+        .badge {
+            background: #e9ecef;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #2d3436;
+            margin-left: 5px;
+        }
+
+        /* === Стили для блоков обучения === */
+        .study-block {
+            margin-bottom: 18px;
+        }
+
+        .study-block h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .study-list {
+            list-style: none;
+            padding-left: 5px;
+        }
+
+        .study-list li {
+            padding: 6px 0 6px 28px;
+            position: relative;
+            font-size: 0.9rem;
+            color: #2d3436;
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .study-list li::before {
+            position: absolute;
+            left: 8px;
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 0.8rem;
+        }
+
+        /* Пройденные темы */
+        .completed h3 {
+            color: #27ae60;
+        }
+        .completed .study-list li {
+            border-left-color: #27ae60;
+            color: #2d3436;
+        }
+        .completed .study-list li::before {
+            content: '\f00c';
+            color: #27ae60;
+        }
+
+        /* Изучаю сейчас */
+        .in-progress h3 {
+            color: #f39c12;
+        }
+        .in-progress .study-list li {
+            border-left-color: #f39c12;
+            background: rgba(243, 156, 18, 0.03);
+            animation: pulse 2s infinite;
+        }
+        .in-progress .study-list li::before {
+            content: '\f144';
+            color: #f39c12;
+        }
+
+        @keyframes pulse {
+            0%, 100% { background: rgba(243, 156, 18, 0.03); }
+            50% { background: rgba(243, 156, 18, 0.08); }
+        }
+
+        /* Планирую изучить */
+        .planned h3 {
+            color: #95a5a6;
+        }
+        .planned .study-list li {
+            border-left-color: #bdc3c7;
+            color: #7f8c8d;
+        }
+        .planned .study-list li::before {
+            content: '\f017';
+            color: #95a5a6;
+        }
+
+        /* Ссылка на домашки */
+        .homework-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding: 10px 18px;
+            background: white;
+            border: 1px dashed #6c5ce7;
+            border-radius: 12px;
+            color: #6c5ce7;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .homework-link:hover {
+            background: #6c5ce7;
+            color: white;
+            border-style: solid;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        }
+
+        /* === Контакты и соцсети === */
+        .contact-link {
+            text-decoration: none;
+            color: #2d3436;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.2s;
+        }
+
+        .contact-link:hover {
+            color: #6c5ce7;
+        }
+
+        /* === Ссылки на сертификаты (особая стилизация) === */
+        .certificates {
+            grid-column: span 2;
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 5px;
+        }
+
+        .cert-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .cert-link {
+            background: white;
+            border: 1px solid #dfe6e9;
+            border-radius: 12px;
+            padding: 12px 18px;
+            text-decoration: none;
+            color: #2d3436;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .cert-link:hover {
+            border-color: #6c5ce7;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.15);
+            color: #6c5ce7;
+        }
+
+        .cert-link i {
+            font-size: 1.3rem;
+            color: #e74c3c; /* цвет PDF/документа */
+        }
+
+        /* === Плавающая кнопка Telegram (кружок справа внизу) === */
+        .telegram-float {
+            position: fixed;
+            right: 25px;
+            bottom: 30px;
+            width: 60px;
+            height: 60px;
+            background: #0088cc;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            color: white;
+            text-decoration: none;
+        }
+
+        .telegram-float:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 30px rgba(0, 136, 204, 0.6);
+            background: #0099e6;
+        }
+
+        .telegram-float i {
+            font-size: 2rem;
+        }
+
+        /* === Адаптивность для мобильных === */
+        @media (max-width: 600px) {
+            .card {
+                padding: 25px;
+                border-radius: 20px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .left-column {
+                gap: 15px;
+            }
+            .certificates {
+                grid-column: span 1;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .status-block {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 15px 18px;
+            }
+            .telegram-float {
+                width: 50px;
+                height: 50px;
+                right: 15px;
+                bottom: 20px;
+            }
+            .telegram-float i {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- Шапка с именем и должностью -->
+        <div class="header">
+            <h1>Денис Браун</h1>
+            <span class="tagline">Junior QA Engineer • Ручное тестирование</span>
+        </div>
+
+        <!-- Блок со статусом (цель) -->
+        <div class="status-block">
+            <span class="status-dot"></span>
+            <span class="status-text">
+                <strong>Открыт к входящим предложениям</strong> — ищу позицию Junior QA Engineer для старта карьеры в тестировании. Готов к проектной работе, фрилансу и удалённому сотрудничеству.
+            </span>
+        </div>
+
+        <!-- Основная сетка с информацией -->
+        <div class="grid">
+            
+            <!-- ЛЕВАЯ КОЛОНКА: два отдельных блока -->
+            <div class="left-column">
+                
+                <!-- Блок 1: Ключевые навыки -->
+                <div class="section">
+                    <h2><i class="fas fa-code"></i> Ключевые навыки</h2>
+                    <ul class="skills-list">
+                        <li><i class="fas fa-check-circle"></i> Ручное тестирование <span class="badge">Web</span></li>
+                        <li><i class="fas fa-check-circle"></i> Написание тест-кейсов / чек-листов</li>
+                        <li><i class="fas fa-check-circle"></i> Баг-репорты (Jira, Яндекс.Трекер)</li>
+                        <li><i class="fas fa-check-circle"></i> Git, GitHub <span class="badge">контроль версий</span></li>
+                        <li><i class="fas fa-check-circle"></i> DevTools, Postman (основы)</li>
+                        <li><i class="fas fa-check-circle"></i> Понимание HTTP/HTML/CSS</li>
+                    </ul>
+                </div>
+
+                <!-- Блок 2: Контакты -->
+                <div class="section">
+                    <h2><i class="fas fa-address-card"></i> Контакты</h2>
+                    <ul class="contact-list">
+                        <li><a href="mailto:artem.qa@example.com" class="contact-link"><i class="fas fa-envelope"></i> idenbraun@yandex.ru</a></li>
+                        <li><a href="#" class="contact-link"><i class="fab fa-github"></i> github.com/idenbraun</a></li>
+                        <li><span class="contact-link"><i class="fas fa-map-marker-alt"></i> г. Архангельск / удалённо</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ПРАВАЯ КОЛОНКА: Обучение -->
+            <div class="section">
+                <h2><i class="fas fa-graduation-cap"></i> Обучение в Нетологии</h2>
+                <p style="font-size:0.9rem; color:#636e72; margin-bottom: 15px;">
+                    <strong>Инженер по тестированию: расширенный курс</strong> (2026 - 2027)
+                </p>
+
+                <!-- Пройденные темы -->
+                <div class="study-block completed">
+                    <h3><i class="fas fa-check-double"></i> Пройдено</h3>
+                    <ul class="study-list">
+                        <li>Ручное тестирование веб-приложений</li>
+                        <li>Git — система контроля версий</li>
+                    </ul>
+                </div>
+
+                <!-- Изучаю сейчас -->
+                <div class="study-block in-progress">
+                    <h3><i class="fas fa-spinner fa-pulse"></i> В процессе</h3>
+                    <ul class="study-list">
+                        <li>Тестирование API (Postman, REST)</li>
+                        <li>Базы данных и SQL (основы)</li>
+                        <li>Основы автоматизации тестирования</li>
+                    </ul>
+                </div>
+
+                <!-- Планирую изучить -->
+                <div class="study-block planned">
+                    <h3><i class="far fa-clock"></i> В планах</h3>
+                    <ul class="study-list">
+                        <li>Java / Python для автоматизации</li>
+                        <li>Selenium WebDriver</li>
+                        <li>CI/CD (Jenkins, GitHub Actions)</li>
+                        <li>Нагрузочное тестирование (JMeter)</li>
+                    </ul>
+                </div>
+
+                <!-- Ссылка на домашние работы -->
+                <a href="https://docs.google.com/document/d/1q1wWDFhJuXH_csFDw-b9GER1zqU1pOM3TG3p0IHNUug/edit?tab=t.0#heading=h.80dwzshzshr" target="_blank" class="homework-link">
+                    <i class="fas fa-external-link-alt"></i>
+                    Мои домашние задания
+                </a>
+            </div>
+
+            <!-- Блок с сертификатами (ссылки на Нетологию) -->
+            <div class="certificates">
+                <h2><i class="fas fa-certificate"></i> Сертификаты Нетологии</h2>
+                <div class="cert-links">
+                    <!-- Замените # на реальные ссылки на ваши сертификаты -->
+                    <a href="https://netology.ru/sharing/dc64557a5b6efcca58d1228ac8a9e4b1?utm_source=social&utm_campaign=achievements" target="_blank" class="cert-link" title="Сертификат: Ручное тестирование">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>Ручное тестирование веб-приложений</span>
+                    </a>
+                    <a href="https://netology.ru/sharing/b2529cbe9668419dd5031a42008d057d?utm_source=social&utm_campaign=achievements" target="_blank" class="cert-link" title="Сертификат: Git">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>Git — система контроля версий</span>
+                    </a>
+                </div>
+                <p style="font-size:0.8rem; color:#636e72; margin-top: 12px;">
+                    <i class="fas fa-info-circle"></i> Ссылки ведут на официальные сертификаты Нетологии
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кружок Telegram (фиксированный, справа внизу) -->
+    <a href="https://t.me/idendie" target="_blank" class="telegram-float" title="Написать в Telegram">
+        <i class="fab fa-telegram-plane"></i>
+    </a>
+
+</body>
+</html>
