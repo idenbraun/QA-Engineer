@@ -305,6 +305,43 @@
             box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
         }
 
+        /* === Кнопка портфолио === */
+        .portfolio-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+            letter-spacing: 0.3px;
+        }
+
+        .portfolio-button:hover {
+            background: linear-gradient(135deg, #5b4cdb, #9088f5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
+        }
+
+        .portfolio-button i {
+            font-size: 1.1rem;
+        }
+
+        .portfolio-description {
+            font-size: 0.8rem;
+            color: #636e72;
+            margin-top: 10px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
         /* === Контакты и соцсети === */
         .contact-link {
             text-decoration: none;
@@ -361,6 +398,25 @@
             color: #e74c3c; /* цвет PDF/документа */
         }
 
+        /* === Дата последнего обновления === */
+        .last-updated {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #dfe6e9;
+            font-size: 0.85rem;
+            color: #95a5a6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .last-updated i {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
         /* === Плавающая кнопка Telegram (кружок справа внизу) === */
         .telegram-float {
             position: fixed;
@@ -414,6 +470,15 @@
                 gap: 10px;
                 padding: 15px 18px;
             }
+            .last-updated {
+                margin-top: 20px;
+                padding-top: 15px;
+                font-size: 0.8rem;
+            }
+            .portfolio-button {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
             .telegram-float {
                 width: 50px;
                 height: 50px;
@@ -446,7 +511,7 @@
         <!-- Основная сетка с информацией -->
         <div class="grid">
             
-            <!-- ЛЕВАЯ КОЛОНКА: два отдельных блока -->
+            <!-- ЛЕВАЯ КОЛОНКА: три отдельных блока -->
             <div class="left-column">
                 
                 <!-- Блок 1: Ключевые навыки -->
@@ -466,10 +531,24 @@
                 <div class="section">
                     <h2><i class="fas fa-address-card"></i> Контакты</h2>
                     <ul class="contact-list">
-                        <li><a href="mailto:artem.qa@example.com" class="contact-link"><i class="fas fa-envelope"></i> idenbraun@yandex.ru</a></li>
+                        <li><a href="mailto:idenbraun@yandex.ru" class="contact-link"><i class="fas fa-envelope"></i> idenbraun@yandex.ru</a></li>
                         <li><a href="#" class="contact-link"><i class="fab fa-github"></i> github.com/idenbraun</a></li>
                         <li><span class="contact-link"><i class="fas fa-map-marker-alt"></i> г. Архангельск / удалённо</span></li>
                     </ul>
+                </div>
+
+                <!-- Блок 3: Портфолио -->
+                <div class="section">
+                    <h2><i class="fas fa-folder-open"></i> Портфолио</h2>
+                    <a href="https://github.com/idenbraun/portfolio" target="_blank" class="portfolio-button">
+                        <i class="fas fa-briefcase"></i>
+                        Смотреть примеры работ
+                        (Ссылка не работает)
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <p class="portfolio-description">
+                        <i class="fas fa-lightbulb"></i> Тест-кейсы, баг-репорты, чек-листы и проекты по тестированию
+                    </p>
                 </div>
             </div>
 
@@ -519,9 +598,8 @@
 
             <!-- Блок с сертификатами (ссылки на Нетологию) -->
             <div class="certificates">
-                <h2><i class="fas fa-certificate"></i> Сертификаты Нетологии</h2>
+                <h2><i class="fas fa-scroll"></i> Сертификаты Нетологии</h2>
                 <div class="cert-links">
-                    <!-- Замените # на реальные ссылки на ваши сертификаты -->
                     <a href="https://netology.ru/sharing/dc64557a5b6efcca58d1228ac8a9e4b1?utm_source=social&utm_campaign=achievements" target="_blank" class="cert-link" title="Сертификат: Ручное тестирование">
                         <i class="fas fa-file-pdf"></i>
                         <span>Ручное тестирование веб-приложений</span>
@@ -535,6 +613,12 @@
                     <i class="fas fa-info-circle"></i> Ссылки ведут на официальные сертификаты Нетологии
                 </p>
             </div>
+        </div>
+
+        <!-- Дата последнего обновления -->
+        <div class="last-updated">
+            <i class="fas fa-sync-alt"></i>
+            Последнее обновление: 1 мая 2026 г.
         </div>
     </div>
 
