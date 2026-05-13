@@ -305,6 +305,37 @@
             box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
         }
 
+        /* === Кнопка "Скачать резюме" === */
+        .resume-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px 18px;
+            background: white;
+            border: 1px solid #dfe6e9;
+            border-radius: 12px;
+            color: #2d3436;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            margin-bottom: 10px;
+        }
+
+        .resume-button:hover {
+            border-color: #27ae60;
+            color: #27ae60;
+            background: #eafaf1;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.1);
+        }
+
+        .resume-button i {
+            font-size: 1rem;
+        }
+
         /* === Кнопка портфолио === */
         .portfolio-button {
             display: flex;
@@ -531,11 +562,20 @@
                 <!-- Блок 2: Портфолио -->
                 <div class="section">
                     <h2><i class="fas fa-briefcase"></i> Портфолио</h2>
+                    
+                    <!-- Кнопка "Скачать резюме" -->
+                    <a href="ССЫЛКА_НА_PDF" target="_blank" class="resume-button">
+                        <i class="fas fa-download"></i>
+                        Скачать резюме (PDF)
+                    </a>
+
+                    <!-- Кнопка "Смотреть примеры работ" -->
                     <a href="https://github.com/idenbraun/QA-Engineer-Projects" target="_blank" class="portfolio-button">
                         <i class="fab fa-github"></i>
                         Смотреть примеры работ
                         <i class="fas fa-arrow-right"></i>
                     </a>
+
                     <p class="portfolio-description">
                         <i class="fas fa-lightbulb"></i> Тест-кейсы, баг-репорты, чек-листы и проекты по тестированию
                     </p>
