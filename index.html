@@ -79,7 +79,7 @@
         /* === Блок со статусом === */
         .status-block {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 12px;
             background: #f1f4f8;
             border-radius: 16px;
@@ -101,7 +101,6 @@
             background: #27ae60;
             border-radius: 50%;
             flex-shrink: 0;
-            margin-top: 3px;
             position: relative;
             animation: pulse-dot 2s infinite;
         }
@@ -497,13 +496,10 @@
                 font-size: 2rem;
             }
             .status-block {
-                flex-direction: row;
+                flex-direction: column;
                 align-items: flex-start;
                 gap: 10px;
                 padding: 15px 18px;
-            }
-            .status-dot {
-                margin-top: 2px;
             }
             .last-updated {
                 margin-top: 20px;
@@ -568,7 +564,7 @@
                     <h2><i class="fas fa-briefcase"></i> Портфолио</h2>
                     
                     <!-- Кнопка "Скачать резюме" -->
-                    <a href="https://disk.yandex.ru/d/ВАША_ССЫЛКА_НА_PDF" target="_blank" class="resume-button">
+                    <a href="ССЫЛКА_НА_PDF" target="_blank" class="resume-button">
                         <i class="fas fa-download"></i>
                         Скачать резюме (PDF)
                     </a>
