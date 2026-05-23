@@ -3,11 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QA Engineer | Денис Браун</title>
-    <!-- иконки Font Awesome для логотипов -->
+    <title>Денис Браун | QA Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* === Базовые стили и сброс === */
+        :root {
+            --bg-primary: #0D0D0D;
+            --bg-secondary: #141414;
+            --bg-card: #1A1A1A;
+            --bg-card-hover: #1F1F1F;
+            --text-primary: #FFFFFF;
+            --text-secondary: #999999;
+            --text-muted: #666666;
+            --accent-lime: #C8E600;
+            --accent-lime-dark: #A8C200;
+            --accent-lime-glow: rgba(200, 230, 0, 0.12);
+            --green-status: #27ae60;
+            --pdf-red: #e74c3c;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-medium: rgba(255, 255, 255, 0.1);
+            --border-lime: rgba(200, 230, 0, 0.3);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,693 +36,1007 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::-webkit-scrollbar {
+            width: 3px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-lime);
+            border-radius: 3px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            padding: 28px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(13, 13, 13, 0.88);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-lime);
+            border-radius: 50%;
+            flex-shrink: 0;
+            animation: logo-pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(200, 230, 0, 0.5);
+        }
+        .logo-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-lime);
+            background: rgba(200, 230, 0, 0.06);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(200, 230, 0, 0.15);
+            margin-left: 2px;
+        }
+        @keyframes logo-pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(200, 230, 0, 0.7), 0 0 10px rgba(200, 230, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(200, 230, 0, 0), 0 0 20px rgba(200, 230, 0, 0.1);
+            }
+        }
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            background: var(--bg-card);
+            padding: 10px 18px;
+            border-radius: 22px;
+            border: 1px solid var(--border-medium);
+            letter-spacing: -0.2px;
+        }
+        .status-dot {
+            width: 9px;
+            height: 9px;
+            background: var(--green-status);
+            border-radius: 50%;
+            animation: logo-pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 8px rgba(39, 174, 96, 0.5);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 70px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -250px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-lime-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-lime);
+            margin-bottom: 16px;
+            background: rgba(200, 230, 0, 0.06);
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(200, 230, 0, 0.15);
+        }
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+        .hero-title .lime {
+            color: var(--accent-lime);
+            position: relative;
+        }
+        .hero-title .lime::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--accent-lime);
+            opacity: 0.2;
+            border-radius: 3px;
+            z-index: -1;
+        }
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            max-width: 440px;
+            line-height: 1.5;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 24px;
+            background: var(--accent-lime);
+            color: #0D0D0D;
+            font-weight: 700;
+            font-size: 0.88rem;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            letter-spacing: -0.2px;
+        }
+        .btn-primary:hover {
+            background: #D4F020;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(200, 230, 0, 0.3);
+        }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 24px;
+            background: transparent;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.88rem;
+            border: 1.5px solid var(--border-medium);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            letter-spacing: -0.2px;
+        }
+        .btn-outline:hover {
+            border-color: var(--accent-lime);
+            color: var(--accent-lime);
+            background: rgba(200, 230, 0, 0.03);
+        }
+
+        /* ===== BUG CARD ===== */
+        .hero-visual {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            color: #2d3436;
+        }
+        .bug-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            width: 100%;
+            max-width: 380px;
+            position: relative;
+        }
+        .bug-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 28px 24px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            transform-style: preserve-3d;
+            perspective: 800px;
+        }
+        .bug-card-link:hover .bug-card {
+            border-color: var(--border-lime);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(200, 230, 0, 0.08);
+        }
+        .bug-card-link::after {
+            content: 'Смотреть примеры работ →';
+            position: absolute;
+            bottom: -32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            font-size: 0.72rem;
+            color: var(--accent-lime);
+            font-weight: 500;
+            opacity: 0;
+            transition: all 0.35s ease;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        .bug-card-link:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .bug-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .bug-icon {
+            width: 38px;
+            height: 38px;
+            background: rgba(200, 230, 0, 0.1);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .bug-severity {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-lime);
+            background: rgba(200, 230, 0, 0.08);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .bug-id {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .bug-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            letter-spacing: -0.2px;
+        }
+        .bug-meta {
+            display: flex;
+            gap: 14px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .bug-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .bug-code {
+            background: #0A0A0A;
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+            overflow-x: auto;
+            white-space: pre;
             line-height: 1.6;
         }
-
-        /* === Основной контейнер карточки === */
-        .card {
-            max-width: 800px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(15px);
-            background: #ffffff;
-            border-radius: 30px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
+        .bug-code .keyword {
+            color: var(--accent-lime);
+        }
+        .bug-code .string {
+            color: #E6A0C0;
+        }
+        .bug-code .comment {
+            color: #555;
         }
 
-        /* Декоративная полоса сверху */
-        .card::before {
+        /* ===== TICKER ===== */
+        .ticker-section {
+            padding: 0 0 30px;
+        }
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 14px 0;
+            background: var(--bg-secondary);
+            position: relative;
+        }
+        .ticker-wrap::before,
+        .ticker-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .ticker-wrap::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-secondary), transparent);
+        }
+        .ticker-wrap::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-secondary), transparent);
+        }
+        .ticker {
+            display: flex;
+            width: fit-content;
+            animation: ticker-scroll 30s linear infinite;
+        }
+        .ticker-item {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            padding: 0 22px;
+            letter-spacing: -0.2px;
+        }
+        .ticker-item.lime {
+            color: var(--accent-lime);
+        }
+        .ticker-separator {
+            color: var(--accent-lime);
+            opacity: 0.4;
+            font-size: 0.4rem;
+            align-self: center;
+        }
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .ticker-wrap:hover .ticker {
+            animation-play-state: paused;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 50px 0;
+        }
+        .section-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-lime);
+            margin-bottom: 10px;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            margin-bottom: 32px;
+            line-height: 1.15;
+        }
+        .section-title .lime {
+            color: var(--accent-lime);
+        }
+
+        /* ===== SKILLS COMPACT ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            font-size: 0.8rem;
+            transition: all 0.25s ease;
+            cursor: default;
+        }
+        .skill-item:hover {
+            border-color: var(--border-lime);
+            background: var(--bg-card-hover);
+            transform: translateX(3px);
+        }
+        .skill-icon {
+            width: 26px;
+            height: 26px;
+            background: rgba(200, 230, 0, 0.08);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.75rem;
+            color: var(--accent-lime);
+        }
+        .skill-badge {
+            font-size: 0.6rem;
+            font-weight: 600;
+            padding: 2px 7px;
+            border-radius: 10px;
+            background: rgba(200, 230, 0, 0.08);
+            color: var(--accent-lime);
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        /* ===== STUDY SECTION ===== */
+        .study-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .study-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 24px 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .study-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, #6c5ce7, #a29bfe, #6c5ce7);
+            height: 3px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
-
-        /* === Шапка: имя и специализация === */
-        .header {
-            text-align: left;
-            margin-bottom: 20px;
+        .study-card:hover::before {
+            transform: scaleX(1);
         }
-
-        .header h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: #2d3436;
-            margin-bottom: 5px;
+        .study-card.completed {
+            border-left: 3px solid var(--green-status);
         }
-
-        .tagline {
-            font-size: 1.2rem;
-            color: #6c5ce7;
-            font-weight: 500;
-            background: rgba(108, 92, 231, 0.1);
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
+        .study-card.completed::before {
+            background: var(--green-status);
         }
-
-        /* === Блок со статусом === */
-        .status-block {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            background: #f1f4f8;
-            border-radius: 16px;
-            padding: 18px 24px;
-            margin-bottom: 30px;
-            border-left: 4px solid #27ae60;
-            transition: all 0.3s ease;
+        .study-card.in-progress {
+            border-left: 3px solid #f39c12;
         }
-
-        .status-block:hover {
-            background: #eafaf1;
-            border-left-color: #2ecc71;
-            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.1);
+        .study-card.in-progress::before {
+            background: #f39c12;
         }
-
-        .status-dot {
-            width: 14px;
-            height: 14px;
-            background: #27ae60;
-            border-radius: 50%;
-            flex-shrink: 0;
-            margin-top: 3px;
-            position: relative;
-            animation: pulse-dot 2s infinite;
+        .study-card.planned {
+            border-left: 3px solid #555;
         }
-
-        @keyframes pulse-dot {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7);
-            }
-            50% {
-                box-shadow: 0 0 0 10px rgba(39, 174, 96, 0);
-            }
+        .study-card.planned::before {
+            background: #555;
         }
-
-        .status-text {
-            font-size: 0.95rem;
-            color: #2d3436;
-            font-weight: 500;
-        }
-
-        .status-text strong {
-            color: #27ae60;
-        }
-
-        /* === Сетка для разделов === */
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        /* === Левая колонка — своя внутренняя сетка === */
-        .left-column {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .section {
-            background: #f8f9fa;
-            border-radius: 20px;
-            padding: 20px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .section:hover {
+        .study-card:hover {
+            background: var(--bg-card-hover);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
-
-        .section h2 {
-            font-size: 1.2rem;
+        .study-card h3 {
+            font-size: 0.78rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #6c5ce7;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            letter-spacing: 0.8px;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
-
-        .section h2 i {
-            font-size: 1.1rem;
-            color: #a29bfe;
-        }
-
-        /* === Списки навыков и контактов === */
-        .skills-list, .contact-list {
+        .study-card.completed h3 { color: var(--green-status); }
+        .study-card.in-progress h3 { color: #f39c12; }
+        .study-card.planned h3 { color: #888; }
+        .study-card ul {
             list-style: none;
+            padding: 0;
         }
-
-        .skills-list li, .contact-list li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.95rem;
-        }
-
-        .skills-list i {
-            color: #6c5ce7;
-            width: 20px;
-            text-align: center;
-        }
-
-        .badge {
-            background: #e9ecef;
-            padding: 3px 10px;
-            border-radius: 15px;
+        .study-card li {
             font-size: 0.8rem;
-            color: #2d3436;
-            margin-left: 5px;
-        }
-
-        /* === Стили для блоков обучения === */
-        .study-block {
-            margin-bottom: 18px;
-        }
-
-        .study-block h3 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-
-        .study-list {
-            list-style: none;
-            padding-left: 5px;
-        }
-
-        .study-list li {
-            padding: 6px 0 6px 28px;
+            color: var(--text-secondary);
+            padding: 4px 0;
+            padding-left: 18px;
             position: relative;
-            font-size: 0.9rem;
-            color: #2d3436;
-            border-left: 2px solid transparent;
-            transition: all 0.2s ease;
-        }
-
-        .study-list li::before {
-            position: absolute;
-            left: 8px;
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            font-size: 0.8rem;
-        }
-
-        /* Пройденные темы */
-        .completed h3 {
-            color: #27ae60;
-        }
-        .completed .study-list li {
-            border-left-color: #27ae60;
-            color: #2d3436;
-        }
-        .completed .study-list li::before {
-            content: '\f00c';
-            color: #27ae60;
-        }
-
-        /* Изучаю сейчас */
-        .in-progress h3 {
-            color: #f39c12;
-        }
-        .in-progress .study-list li {
-            border-left-color: #f39c12;
-            background: rgba(243, 156, 18, 0.03);
-            animation: pulse 2s infinite;
-        }
-        .in-progress .study-list li::before {
-            content: '\f144';
-            color: #f39c12;
-        }
-
-        @keyframes pulse {
-            0%, 100% { background: rgba(243, 156, 18, 0.03); }
-            50% { background: rgba(243, 156, 18, 0.08); }
-        }
-
-        /* Планирую изучить */
-        .planned h3 {
-            color: #95a5a6;
-        }
-        .planned .study-list li {
-            border-left-color: #bdc3c7;
-            color: #7f8c8d;
-        }
-        .planned .study-list li::before {
-            content: '\f017';
-            color: #95a5a6;
-        }
-
-        /* Ссылка на домашки */
-        .homework-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 12px;
-            padding: 10px 18px;
-            background: white;
-            border: 1px dashed #6c5ce7;
-            border-radius: 12px;
-            color: #6c5ce7;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            align-self: flex-start;
-        }
-
-        .homework-link:hover {
-            background: #6c5ce7;
-            color: white;
-            border-style: solid;
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
-        }
-
-        /* === Кнопка "Скачать резюме" === */
-        .resume-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            padding: 12px 18px;
-            background: white;
-            border: 1px solid #dfe6e9;
-            border-radius: 12px;
-            color: #2d3436;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            margin-bottom: 10px;
-        }
-
-        .resume-button:hover {
-            border-color: #27ae60;
-            color: #27ae60;
-            background: #eafaf1;
-            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.1);
-        }
-
-        .resume-button i {
-            font-size: 1rem;
-        }
-
-        /* === Кнопка портфолио === */
-        .portfolio-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 14px 20px;
-            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            color: white;
-            text-decoration: none;
-            border-radius: 14px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
-            letter-spacing: 0.3px;
-        }
-
-        .portfolio-button:hover {
-            background: linear-gradient(135deg, #5b4cdb, #9088f5);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
-        }
-
-        .portfolio-button i {
-            font-size: 1.1rem;
-        }
-
-        .portfolio-description {
-            font-size: 0.8rem;
-            color: #636e72;
-            margin-top: 10px;
-            text-align: center;
             line-height: 1.4;
         }
+        .study-card li::before {
+            position: absolute;
+            left: 0;
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 0.6rem;
+            top: 6px;
+        }
+        .study-card.completed li::before { content: '\f00c'; color: var(--green-status); }
+        .study-card.in-progress li::before { content: '\f144'; color: #f39c12; }
+        .study-card.planned li::before { content: '\f017'; color: #666; }
 
-        /* === Контакты и соцсети === */
-        .contact-link {
-            text-decoration: none;
-            color: #2d3436;
+        /* ===== CERTIFICATES ===== */
+        .certs-row {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: color 0.2s;
-        }
-
-        .contact-link:hover {
-            color: #6c5ce7;
-        }
-
-        /* === Ссылки на сертификаты (особая стилизация) === */
-        .certificates {
-            grid-column: span 2;
-            background: #f8f9fa;
-            border-radius: 20px;
-            padding: 20px;
-            margin-top: 5px;
-        }
-
-        .cert-links {
-            display: flex;
+            gap: 12px;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 10px;
         }
-
         .cert-link {
-            background: white;
-            border: 1px solid #dfe6e9;
-            border-radius: 12px;
-            padding: 12px 18px;
-            text-decoration: none;
-            color: #2d3436;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 14px 20px;
+            text-decoration: none;
+            color: var(--text-primary);
             font-weight: 500;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-
-        .cert-link:hover {
-            border-color: #6c5ce7;
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.15);
-            color: #6c5ce7;
-        }
-
-        .cert-link i {
-            font-size: 1.3rem;
-            color: #e74c3c; /* цвет PDF/документа */
-        }
-
-        /* === Дата последнего обновления === */
-        .last-updated {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #dfe6e9;
             font-size: 0.85rem;
-            color: #95a5a6;
+            transition: all 0.25s ease;
+            letter-spacing: -0.2px;
+        }
+        .cert-link:hover {
+            border-color: var(--accent-lime);
+            background: var(--bg-card-hover);
+            color: var(--accent-lime);
+            box-shadow: 0 0 20px var(--accent-lime-glow);
+        }
+        .cert-link i {
+            color: var(--pdf-red);
+            font-size: 1.1rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 28px 0;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .footer .lime {
+            color: var(--accent-lime);
+            font-weight: 600;
+        }
+        .footer-left {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
         }
-
-        .last-updated i {
-            color: #bdc3c7;
-            font-size: 0.9rem;
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .footer-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: color 0.2s;
+            font-size: 0.78rem;
+        }
+        .footer-contact:hover {
+            color: var(--accent-lime);
+        }
+        .footer-contact i {
+            font-size: 0.8rem;
+        }
+        .footer-separator {
+            color: var(--border-medium);
+            font-size: 0.6rem;
         }
 
-        /* === Плавающая кнопка Telegram (кружок справа внизу) === */
+        /* ===== TELEGRAM FLOAT ===== */
         .telegram-float {
             position: fixed;
-            right: 25px;
-            bottom: 30px;
-            height: 60px;
+            right: 24px;
+            bottom: 28px;
+            height: 52px;
+            width: 52px;
             background: #0088cc;
-            border-radius: 30px;
+            border-radius: 26px;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
-            transition: all 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 1000;
             color: white;
             text-decoration: none;
-            padding: 0 16px;
+            padding: 0 14px;
             gap: 0px;
-            width: 60px;
             overflow: hidden;
             white-space: nowrap;
         }
-
         .telegram-float:hover {
-            width: 300px;
+            width: 260px;
             gap: 10px;
             background: #0099e6;
-            box-shadow: 0 12px 30px rgba(0, 136, 204, 0.6);
+            box-shadow: 0 12px 35px rgba(0, 136, 204, 0.6);
         }
-
         .telegram-float i {
-            font-size: 2rem;
+            font-size: 1.6rem;
             flex-shrink: 0;
-            min-width: 28px;
-            text-align: center;
         }
-
         .telegram-text {
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             font-weight: 500;
             opacity: 0;
             width: 0;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.35s ease;
         }
-
         .telegram-float:hover .telegram-text {
             opacity: 1;
             width: auto;
         }
 
-        /* === Адаптивность для мобильных === */
-        @media (max-width: 600px) {
-            .card {
-                padding: 25px;
-                border-radius: 20px;
-            }
-            .grid {
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .hero-grid {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
-            .left-column {
-                gap: 15px;
-            }
-            .certificates {
-                grid-column: span 1;
-            }
-            .header h1 {
-                font-size: 2rem;
-            }
-            .status-block {
-                flex-direction: row;
-                align-items: flex-start;
-                gap: 10px;
-                padding: 15px 18px;
-            }
-            .status-dot {
-                margin-top: 2px;
-            }
-            .last-updated {
-                margin-top: 20px;
-                padding-top: 15px;
-                font-size: 0.8rem;
-            }
-            .portfolio-button {
-                padding: 12px 16px;
-                font-size: 0.9rem;
-            }
-            .telegram-float {
-                right: 15px;
-                bottom: 20px;
-                height: 50px;
-                width: 50px;
-                padding: 0 12px;
-            }
-            .telegram-float i {
-                font-size: 1.5rem;
-                min-width: 24px;
-            }
-            .telegram-float:hover {
-                width: 260px;
-            }
-            .telegram-text {
-                font-size: 0.8rem;
-            }
+            .hero-visual { order: -1; }
+            .bug-card-link { max-width: 100%; }
+            .hero-title { font-size: 2.4rem; }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .study-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 0 16px; }
+            .header { padding: 20px 0; }
+            .logo { font-size: 1.1rem; }
+            .logo-tag { font-size: 0.6rem; padding: 3px 8px; }
+            .logo-dot { width: 8px; height: 8px; }
+            .header-status { font-size: 0.75rem; padding: 8px 14px; }
+            .hero { padding: 40px 0 30px; }
+            .hero-title { font-size: 2rem; }
+            .hero-buttons { flex-direction: column; }
+            .btn-primary, .btn-outline { justify-content: center; width: 100%; }
+            .section-title { font-size: 1.5rem; }
+            .skills-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+            .skill-item { padding: 8px 10px; font-size: 0.72rem; gap: 6px; }
+            .skill-icon { width: 22px; height: 22px; font-size: 0.65rem; }
+            .skill-badge { font-size: 0.55rem; padding: 2px 5px; }
+            .certs-row { flex-direction: column; }
+            .cert-link { justify-content: center; }
+            .footer { flex-direction: column; text-align: center; gap: 10px; }
+            .footer-right { justify-content: center; }
+            .bug-card-link::after { bottom: -28px; font-size: 0.68rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <!-- Шапка с именем и должностью -->
-        <div class="header">
-            <h1>Денис Браун</h1>
-            <span class="tagline">QA Engineer • Ручное тестирование • Изучаю автоматизацию на Java</span>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-inner">
+            <div class="logo">
+                <span class="logo-dot"></span>Денис Браун
+                <span class="logo-tag">QA Engineer</span>
+            </div>
+            <div class="header-status">
+                <span class="status-dot"></span> Открыт к сотрудничеству
+            </div>
         </div>
+    </header>
 
-        <!-- Блок со статусом (цель) -->
-        <div class="status-block">
-            <span class="status-dot"></span>
-            <span class="status-text">
-                <strong>Открыт к входящим предложениям</strong> — ищу позицию QA Engineer для старта карьеры в тестировании. Готов к проектной работе, фрилансу и удалённому сотрудничеству.
-            </span>
-        </div>
-
-        <!-- Основная сетка с информацией -->
-        <div class="grid">
-            
-            <!-- ЛЕВАЯ КОЛОНКА: три отдельных блока -->
-            <div class="left-column">
-                
-                <!-- Блок 1: Ключевые навыки -->
-                <div class="section">
-                    <h2><i class="fas fa-code"></i> Ключевые навыки</h2>
-                    <ul class="skills-list">
-                        <li><i class="fas fa-check-circle"></i> Ручное тестирование <span class="badge">Web</span></li>
-                        <li><i class="fas fa-check-circle"></i> Написание тест-кейсов / чек-листов</li>
-                        <li><i class="fas fa-check-circle"></i> Баг-репорты (Jira, Яндекс.Трекер)</li>
-                        <li><i class="fas fa-check-circle"></i> Git, GitHub <span class="badge">контроль версий</span></li>
-                        <li><i class="fas fa-check-circle"></i> DevTools, Postman (основы)</li>
-                        <li><i class="fas fa-check-circle"></i> JMeter <span class="badge">нагрузочное тестирование</span></li>
-                        <li><i class="fas fa-check-circle"></i> Понимание HTTP/HTML/CSS</li>
-                    </ul>
-                </div>
-
-                <!-- Блок 2: Портфолио -->
-                <div class="section">
-                    <h2><i class="fas fa-briefcase"></i> Портфолио</h2>
-                    
-                    <!-- Кнопка "Скачать резюме" -->
-                    <a href="https://arkhangelsk.hh.ru/resume/7bc07326ff0fd10d200039ed1f6c4c4d663237?print=true" target="_blank" class="resume-button">
-                        <i class="fas fa-download"></i>
-                        Скачать резюме (PDF)
-                    </a>
-
-                    <!-- Кнопка "Смотреть примеры работ" -->
-                    <a href="https://github.com/idenbraun/QA-Engineer-Projects" target="_blank" class="portfolio-button">
-                        <i class="fab fa-github"></i>
-                        Смотреть примеры работ
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-
-                    <p class="portfolio-description">
-                        <i class="fas fa-lightbulb"></i> Тест-кейсы, баг-репорты, чек-листы и проекты по тестированию
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Тестирую софт,<br>чтобы <span class="lime">баги</span> не тестировали<br>ваших пользователей
+                    </h1>
+                    <p class="hero-subtitle">
+                        Ручное тестирование веб-приложений • Изучаю автоматизацию на Java • Пишу тест-кейсы и баг-репорты, в которых не нужно переспрашивать
                     </p>
+                    <div class="hero-buttons">
+                        <a href="https://arkhangelsk.hh.ru/resume/7bc07326ff0fd10d200039ed1f6c4c4d663237?print=true" target="_blank" class="btn-primary">
+                            <i class="fas fa-download"></i> Скачать резюме (hh.ru)
+                        </a>
+                        <a href="https://github.com/idenbraun/QA-Engineer-Projects" target="_blank" class="btn-outline">
+                            <i class="fab fa-github"></i> Портфолио на GitHub
+                        </a>
+                    </div>
                 </div>
-
-                <!-- Блок 3: Контакты -->
-                <div class="section">
-                    <h2><i class="fas fa-address-card"></i> Контакты</h2>
-                    <ul class="contact-list">
-                        <li><a href="mailto:idenbraun@yandex.ru" class="contact-link"><i class="fas fa-envelope"></i> idenbraun@yandex.ru</a></li>
-                        <li><a href="#" class="contact-link"><i class="fab fa-github"></i> github.com/idenbraun</a></li>
-                        <li><span class="contact-link"><i class="fas fa-map-marker-alt"></i> Россия, г. Архангельск / удалённо</span></li>
-                    </ul>
+                <div class="hero-visual">
+                    <a href="https://github.com/idenbraun/QA-Engineer-Projects" target="_blank" class="bug-card-link" id="bugCardLink" title="Смотреть примеры работ на GitHub">
+                        <div class="bug-card" id="bugCard">
+                            <div class="bug-card-header">
+                                <div class="bug-icon">🐛</div>
+                                <div>
+                                    <span class="bug-severity">Critical</span>
+                                    <span class="bug-id">#BUG-2026</span>
+                                </div>
+                            </div>
+                            <div class="bug-title">Кнопка «Оплатить» не работает на iOS 18.6.2</div>
+                            <div class="bug-meta">
+                                <span>📱 iOS Safari</span><span>⚡ High Priority</span><span>✅ Fixed</span>
+                            </div>
+                            <div class="bug-code">
+                                <span class="comment">// Steps to reproduce</span>
+                                <span class="keyword">const</span> button = find(<span class="string">'[data-testid="pay-btn"]'</span>);
+                                <span class="keyword">await</span> button.click();
+                                <span class="comment">// Expected: redirect to payment</span>
+                                <span class="comment">// Actual: button unresponsive</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- ПРАВАЯ КОЛОНКА: Обучение -->
-            <div class="section">
-                <h2><i class="fas fa-graduation-cap"></i> Обучение в Нетологии</h2>
-                <p style="font-size:0.9rem; color:#636e72; margin-bottom: 15px;">
-                    <strong>Инженер по тестированию: расширенный курс</strong> (2026 - 2027)
-                </p>
+    <!-- TICKER -->
+    <div class="ticker-section">
+        <div class="ticker-wrap">
+            <div class="ticker">
+                <span class="ticker-item lime">Ручное тестирование</span><span class="ticker-separator">●</span>
+                <span class="ticker-item">Тест-кейсы / Чек-листы</span><span class="ticker-separator">●</span>
+                <span class="ticker-item lime">Баг-репорты (Jira)</span><span class="ticker-separator">●</span>
+                <span class="ticker-item">Git / GitHub</span><span class="ticker-separator">●</span>
+                <span class="ticker-item lime">DevTools</span><span class="ticker-separator">●</span>
+                <span class="ticker-item">Postman</span><span class="ticker-separator">●</span>
+                <span class="ticker-item lime">JMeter</span><span class="ticker-separator">●</span>
+                <span class="ticker-item">HTTP / HTML / CSS</span><span class="ticker-separator">●</span>
+                <span class="ticker-item lime">Java (изучаю)</span><span class="ticker-separator">●</span>
+                <span class="ticker-item">SQL</span><span class="ticker-separator">●</span>
+                <span class="ticker-item lime">API Testing</span><span class="ticker-separator">●</span>
+                <span class="ticker-item">TestIT</span>
+                <!-- duplicate -->
+                <span class="ticker-separator">●</span><span class="ticker-item lime">Ручное тестирование</span><span class="ticker-separator">●</span>
+                <span class="ticker-item">Тест-кейсы / Чек-листы</span><span class="ticker-separator">●</span>
+                <span class="ticker-item lime">Баг-репорты (Jira)</span><span class="ticker-separator">●</span>
+                <span class="ticker-item">Git / GitHub</span><span class="ticker-separator">●</span>
+                <span class="ticker-item lime">DevTools</span><span class="ticker-separator">●</span>
+                <span class="ticker-item">Postman</span><span class="ticker-separator">●</span>
+                <span class="ticker-item lime">JMeter</span><span class="ticker-separator">●</span>
+                <span class="ticker-item">HTTP / HTML / CSS</span><span class="ticker-separator">●</span>
+                <span class="ticker-item lime">Java (изучаю)</span><span class="ticker-separator">●</span>
+                <span class="ticker-item">SQL</span><span class="ticker-separator">●</span>
+                <span class="ticker-item lime">API Testing</span><span class="ticker-separator">●</span>
+                <span class="ticker-item">TestIT</span>
+            </div>
+        </div>
+    </div>
 
-                <!-- Пройденные темы -->
-                <div class="study-block completed">
+    <!-- SKILLS -->
+    <section class="section" style="padding-top: 30px;">
+        <div class="container">
+            <div class="section-label">// Компетенции</div>
+            <h2 class="section-title">
+                Ключевые <span class="lime">навыки</span>
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-mouse-pointer"></i></span>
+                    Ручное тестирование
+                    <span class="skill-badge">Web</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon"><i class="fab fa-java"></i></span>
+                    Java
+                    <span class="skill-badge">изучаю</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-list-check"></i></span>
+                    Тест-кейсы / Чек-листы
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-bug"></i></span>
+                    Баг-репорты
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon"><i class="fab fa-git-alt"></i></span>
+                    Git, GitHub
+                    <span class="skill-badge">ver</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-code"></i></span>
+                    DevTools, Postman
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-gauge-high"></i></span>
+                    JMeter
+                    <span class="skill-badge">load</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-globe"></i></span>
+                    HTTP / HTML / CSS
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-database"></i></span>
+                    SQL (изучаю)
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-clipboard-check"></i></span>
+                    TestIT
+                    <span class="skill-badge">TMS</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-mobile-alt"></i></span>
+                    Charles Proxy
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-terminal"></i></span>
+                    Командная строка
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STUDY -->
+    <section class="section">
+        <div class="container">
+            <div class="section-label">// Обучение</div>
+            <h2 class="section-title">
+                Инженер по тестированию: <span class="lime">Расширенный курс</span>
+            </h2>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom: 24px; margin-top: -20px;">
+                Нетология • 2026 – 2027
+            </p>
+            <div class="study-grid">
+                <div class="study-card completed">
                     <h3><i class="fas fa-check-double"></i> Пройдено</h3>
-                    <ul class="study-list">
+                    <ul>
                         <li>Ручное тестирование веб-приложений</li>
                         <li>Git — система контроля версий</li>
                         <li>Тестирование API</li>
                     </ul>
                 </div>
-
-                <!-- Изучаю сейчас -->
-                <div class="study-block in-progress">
+                <div class="study-card in-progress">
                     <h3><i class="fas fa-spinner fa-pulse"></i> В процессе</h3>
-                    <ul class="study-list">
+                    <ul>
                         <li>Java</li>
                         <li>Основы автоматизации тестирования</li>
                         <li>Базы данных и SQL</li>
                     </ul>
                 </div>
-
-                <!-- Предстоит изучить -->
-                <div class="study-block planned">
-                    <h3><i class="far fa-clock"></i> Предстоит изучить</h3>
-                    <ul class="study-list">
+                <div class="study-card planned">
+                    <h3><i class="far fa-clock"></i> Предстоит</h3>
+                    <ul>
                         <li>Автоматизация тестирования веб-интерфейсов</li>
                         <li>Тестирование мобильных приложений</li>
                         <li>Тестирование производительности</li>
                         <li>Тестирование безопасности</li>
                     </ul>
                 </div>
+            </div>
+            <a href="https://idenbraun.github.io/banklink/" target="_blank" class="btn-outline" style="margin-top: 16px; display: inline-flex;">
+                <i class="fas fa-external-link-alt"></i> Мои домашние задания
+            </a>
+        </div>
+    </section>
 
-                <!-- Ссылка на домашние работы -->
-                <a href="https://idenbraun.github.io/banklink/" class="homework-link">
-                    <i class="fas fa-external-link-alt"></i>
-                    Мои домашние задания
+    <!-- CERTIFICATES -->
+    <section class="section" style="padding-top: 10px;">
+        <div class="container">
+            <div class="section-label">// Достижения</div>
+            <h2 class="section-title">
+                Сертификаты <span class="lime">Нетологии</span>
+            </h2>
+            <div class="certs-row">
+                <a href="https://netology.ru/sharing/dc64557a5b6efcca58d1228ac8a9e4b1?utm_source=social&utm_campaign=achievements" target="_blank" class="cert-link">
+                    <i class="fas fa-file-pdf"></i> Ручное тестирование веб-приложений
+                </a>
+                <a href="https://netology.ru/sharing/b2529cbe9668419dd5031a42008d057d?utm_source=social&utm_campaign=achievements" target="_blank" class="cert-link">
+                    <i class="fas fa-file-pdf"></i> Git — система контроля версий
                 </a>
             </div>
-
-            <!-- Блок с сертификатами (ссылки на Нетологию) -->
-            <div class="certificates">
-                <h2><i class="fas fa-trophy"></i> Сертификаты Нетологии</h2>
-                <div class="cert-links">
-                    <a href="https://netology.ru/sharing/dc64557a5b6efcca58d1228ac8a9e4b1?utm_source=social&utm_campaign=achievements" target="_blank" class="cert-link" title="Сертификат: Ручное тестирование">
-                        <i class="fas fa-file-pdf"></i>
-                        <span>Ручное тестирование веб-приложений</span>
-                    </a>
-                    <a href="https://netology.ru/sharing/b2529cbe9668419dd5031a42008d057d?utm_source=social&utm_campaign=achievements" target="_blank" class="cert-link" title="Сертификат: Git">
-                        <i class="fas fa-file-pdf"></i>
-                        <span>Git — система контроля версий</span>
-                    </a>
-                </div>
-                <p style="font-size:0.8rem; color:#636e72; margin-top: 12px;">
-                    <i class="fas fa-info-circle"></i> Ссылки ведут на официальные сертификаты Нетологии
-                </p>
-            </div>
+            <p style="font-size:0.75rem; color:var(--text-muted); margin-top: 10px;">
+                <i class="fas fa-info-circle"></i> Ссылки ведут на официальные сертификаты Нетологии
+            </p>
         </div>
+    </section>
 
-        <!-- Дата последнего обновления -->
-        <div class="last-updated">
-            <i class="fas fa-sync-alt"></i>
-            Последнее обновление: 21 мая 2026 г.
+    <!-- FOOTER -->
+    <footer class="footer container">
+        <div class="footer-left">
+            <span><span class="lime">Денис Браун</span> — QA Engineer</span>
+            <span class="footer-separator">|</span>
+            <span><i class="fas fa-sync-alt" style="color:var(--accent-lime); margin-right: 4px;"></i> Обновлено: 21 мая 2026 г.</span>
         </div>
-    </div>
+        <div class="footer-right">
+            <a href="mailto:idenbraun@yandex.ru" class="footer-contact">
+                <i class="fas fa-envelope"></i> idenbraun@yandex.ru
+            </a>
+            <span class="footer-separator">|</span>
+            <a href="https://github.com/idenbraun" target="_blank" class="footer-contact">
+                <i class="fab fa-github"></i> github.com/idenbraun
+            </a>
+            <span class="footer-separator">|</span>
+            <span class="footer-contact">
+                <i class="fas fa-map-marker-alt"></i> Архангельск
+            </span>
+        </div>
+    </footer>
 
-    <!-- Кружок Telegram (фиксированный, справа внизу) -->
+    <!-- TELEGRAM FLOAT -->
     <a href="https://t.me/idendie" target="_blank" class="telegram-float" title="Написать в Telegram">
         <i class="fab fa-telegram-plane"></i>
-        <span class="telegram-text">Связаться со мной в Telegram</span>
+        <span class="telegram-text">Связаться в Telegram</span>
     </a>
 
+    <script>
+        const bugCard = document.getElementById('bugCard');
+        const bugCardLink = document.getElementById('bugCardLink');
+
+        document.addEventListener('mousemove', function(e) {
+            if (!bugCard) return;
+            const rect = bugCard.getBoundingClientRect();
+            const cardCenterX = rect.left + rect.width / 2;
+            const cardCenterY = rect.top + rect.height / 2;
+            const deltaX = (e.clientX - cardCenterX) / 35;
+            const deltaY = (e.clientY - cardCenterY) / 35;
+            bugCard.style.transform = `perspective(800px) rotateY(${deltaX * 0.4}deg) rotateX(${-deltaY * 0.4}deg) translateY(-4px)`;
+            bugCard.style.transition = 'transform 0.15s ease-out';
+        });
+
+        bugCardLink.addEventListener('mouseleave', function() {
+            bugCard.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) translateY(0px)';
+            bugCard.style.transition = 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        });
+
+        bugCardLink.addEventListener('mouseenter', function() {
+            bugCard.style.borderColor = 'rgba(200, 230, 0, 0.3)';
+            bugCard.style.boxShadow = '0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(200, 230, 0, 0.08)';
+        });
+
+        console.log('%c🐛 Денис Браун %cQA Engineer', 'color: #C8E600; font-size: 1.1rem; font-weight: bold;', 'color: #999;');
+        console.log('%c> Готов искать баги. Всегда.', 'color: #666; font-style: italic;');
+    </script>
 </body>
 </html>
